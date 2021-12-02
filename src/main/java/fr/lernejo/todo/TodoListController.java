@@ -5,9 +5,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 @RestController
 public class TodoListController {
     private final TodoRepository repository;
@@ -22,8 +19,7 @@ public class TodoListController {
     }
 
     @GetMapping("/api/todo")
-    public ArrayList<TodoEntity> getTodoList() {
-        Iterable<TodoEntity> repo = this.repository.findAll();
-        return new ArrayList<>((Collection<? extends TodoEntity>) repo);
+    public Iterable<TodoEntity> getTodoList() {
+        return this.repository.findAll();
     }
 }
